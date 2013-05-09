@@ -1,17 +1,6 @@
 from django.db import models
 
 # Create your models here.
-
-#could these 3 models be thought of a polymorphic?
-class ExhibitionHistory(models.Model):
-    entry = models.TextField()
-
-class Notes(models.Model):
-    entry = models.TextField()
-
-class References(models.Model):
-    entry = models.TextField()
-
 class WorkColor(models.Model):
     red = models.IntegerField()
     green = models.IntegerField()
@@ -33,13 +22,10 @@ class Work(models.Model):
     dimensions = models.CharField(max_length=255)
 
     # Relationships
-    dominantcolor = models.ForeignKey(WorkColor, verbose_name="dominant color", related_name="work_dominant_colors")
-    mostsaturated = models.ForeignKey(WorkColor, verbose_name="most saturated color", related_name="work_mostsaturated_colors")
-    palette = models.ForeignKey(WorkColor, related_name="work_palette_colors")
-    searchbycolors = models.ForeignKey(WorkColor, verbose_name="search by colors", related_name="work_searchby_colors")
-    exhibitionHistory = models.ForeignKey(ExhibitionHistory, verbose_name="exhibition history")
-    notes = models.ForeignKey(Notes)
-    references = models.ForeignKey(References)
+    dominantcolor = models.ManyToManyField(WorkColor, verbose_name="dominant color", related_name="work_dominant_colors")
+    mostsaturated = models.ManyToManyField(WorkColor, verbose_name="most saturated color", related_name="work_mostsaturated_colors")
+    palette = models.ManyToManyField(WorkColor, related_name="work_palette_colors")
+    searchbycolors = models.ManyToManyField(WorkColor, verbose_name="search by colors", related_name="work_searchby_colors")
 
     dynasty = models.CharField(max_length=255)
     galleryLabel = models.CharField("gallery label", max_length=255)
@@ -56,4 +42,15 @@ class Work(models.Model):
     workid = models.IntegerField(blank=False, unique=True)
     workurl = models.URLField("work url", blank=False, unique=True)
 
+#could these 3 models be thought of a polymorphic?
+class ExhibitionHistory(models.Model):
+    entry = models.TextField()
+    work = models.ForeignKey(Work)
 
+class Notes(models.Model):
+    entry = models.TextField()
+    work = models.ForeignKey(Work)
+
+class References(models.Model):
+    entry = models.TextField()
+    work = models.ForeignKey(Work)
