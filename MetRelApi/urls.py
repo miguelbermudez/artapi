@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'MetRelApi.views.home', name='home'),
     # url(r'^MetRelApi/', include('MetRelApi.foo.urls')),
 
+    url(r'^entry/', include('Entry.urls', namespace="entry")),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
