@@ -12,7 +12,11 @@ from Entry.models import *
 #referenced fields
 referenced_color_fields = ['palette', 'dominantcolor', 'searchbycolors', 'mostsaturated', ]
 referenced_text_fields = ['references', 'exhibitionHistory', 'notes']
-work_keys = ["id", "accessionNumber", "artist", "catalogueEntry", "catalogueRaisonne", "classification", "creditLine", "culture", "date", "description", "designer", "dimensions", "dynasty", "galleryLabel", "geography", "imageUrl", "imgfilename", "markings", "medium", "period", "provenance", "reign", "rightsReproduction", "title", "workid", "workurl"]
+work_keys = ["id", "accessionNumber", "artist", "catalogueEntry", "catalogueRaisonne", "classification", "creditLine",
+             "culture", "date", "description", "designer", "dimensions", "dynasty", "galleryLabel", "geography",
+             "imageUrl", "imgfilename", "markings", "medium", "period", "provenance", "reign", "rightsReproduction",
+             "title", "workid", "workurl"]
+
 
 def index(request):
     return HttpResponse("hello world")
@@ -20,8 +24,9 @@ def index(request):
 
 def upload(request):
     json_req = None
-    if settings.DEBUG:
-        #json_req = requests.get('https://s3.amazonaws.com/metlinkdb/test.json')
+    if settings.LOCAL:
+        json_req = requests.get('https://s3.amazonaws.com/metlinkdb/test.json')
+    else:
         json_req = requests.get('https://s3.amazonaws.com/metlinkdb/embeeapi_work.json')           #real file
 
     counter = 1
@@ -50,7 +55,7 @@ def upload(request):
                     #loop through value which is a list of work_colors
                     for wc in value:
                         c = {'red': wc['red'], 'green': wc['green'], 'blue': wc['blue'],
-                             'intvalue': wc['intvalue'],'hexvalue': wc['hexvalue']}
+                             'intvalue': wc['intvalue'], 'hexvalue': wc['hexvalue']}
 
                         #create new color
                         wc, created = WorkColor.objects.get_or_create(**c)
