@@ -2,6 +2,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+LOCAL = False
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -9,11 +10,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-if not DEBUG:
+if not LOCAL:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'embeeapi_test',                             # Or path to database file if using sqlite3.
+            'NAME': 'embeeapi_dev',                             # Or path to database file if using sqlite3.
             # The following settings are not used with sqlite3:
             'USER': 'api_user',
             'PASSWORD': 'api_user',
@@ -25,7 +26,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'embeeapi_test',                             # Or path to database file if using sqlite3.
+            'NAME': 'embeeapi_dev',                             # Or path to database file if using sqlite3.
             # The following settings are not used with sqlite3:
             'USER': 'miguelb',
             'PASSWORD': '',
@@ -33,7 +34,6 @@ else:
             'PORT': '',
         }
     }
-
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
