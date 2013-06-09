@@ -42,6 +42,9 @@ class Work(models.Model):
     workid = models.IntegerField(blank=False, unique=True)
     workurl = models.URLField("work url", blank=False, unique=True)
 
+    def get_dominant_color(self):
+        return self.dominantcolor.get()
+
 #could these 3 models be thought of a polymorphic?
 class ExhibitionHistory(models.Model):
     entry = models.TextField()
