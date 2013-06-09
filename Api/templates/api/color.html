@@ -1,0 +1,9 @@
+{% if works %}
+    <ul>
+    {% for w in works %}
+        <li>{{ w.get_dominant_color.hexvalue }}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No colors are available.</p>
+{% endif %}

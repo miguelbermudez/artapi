@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^MetRelApi/', include('MetRelApi.foo.urls')),
 
     url(r'^entry/', include('Entry.urls', namespace="entry")),
+    url(r'^api/', include('Api.urls', namespace="api")),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
