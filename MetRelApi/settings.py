@@ -2,7 +2,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-LOCAL = False
+LOCAL = True
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -26,7 +26,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'embeeapi_dev',                             # Or path to database file if using sqlite3.
+            'NAME': 'embeeapi_test',                             # Or path to database file if using sqlite3.
             # The following settings are not used with sqlite3:
             'USER': 'miguelb',
             'PASSWORD': '',
@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'Entry',
+    'Api'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -160,7 +161,7 @@ LOGGING = {
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
-            'level': 'ERROR',
+            'level': 'INFO',
             'propagate': True,
         },
     }
