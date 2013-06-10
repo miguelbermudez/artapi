@@ -14,13 +14,20 @@ logger = logging.getLogger(__name__)
 JSONSerializer = serializers.get_serializer("json")
 json_serializer = JSONSerializer()
 
-
+WORK_RETURN_NUMBER = 1000
 
 def color(request):
     # all_dominant_colors = []
     page = request.GET.get('page')
+    offset = page * WORK_RETURN_NUMBER + 1 if page is not None else 0
 
-    paginator = Paginator(Work.objects.all(), 1000)
+    allworks = Work.objects.all().prefetch_related('dominantcolor')
+    # allworks = Work.objects.all()
+    # resultset = list(allworks[offset:offset+WORK_RETURN_NUMBER])
+    # resultset = allworks[offset:offset+WORK_RETURN_NUMBER]
+    resultset = list(allworks)
+    # return HttpResponse(str(resultset))
+    paginator = Paginator(resultset, WORK_RETURN_NUMBER)
 
     try:
         works = paginator.page(page)
