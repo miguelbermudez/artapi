@@ -6,7 +6,7 @@
 {% if works %}
     <ul class="swatches">
     {% for w in works %}
-        <li class="swatch" style="background-color: {{ w.get_dominant_color.hexvalue }};"></li>
+        <li class="swatch" style="background-color: {% for c in w.dominantcolor.all %}{{ c.hexvalue }}{% endfor %};"></li>
     {% endfor %}
     </ul>
 {% else %}
