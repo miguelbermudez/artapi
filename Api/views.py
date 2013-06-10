@@ -15,12 +15,7 @@ def color(request):
     # all_dominant_colors = []
     page = request.GET.get('page')
 
-    for w in Work.objects.all():
-        dcolor = w.dominantcolor
-        # all_dominant_colors.append(dcolor)
-
-    #paginator = Paginator(all_dominant_colors, 50)
-    paginator = Paginator(Work.objects.all(), 50)
+    paginator = Paginator(Work.objects.all(), 1000)
 
     try:
         works = paginator.page(page)
