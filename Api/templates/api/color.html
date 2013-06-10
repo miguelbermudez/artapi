@@ -1,9 +1,17 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'api/stylesheets/screen.css' %}" />
+
+<div id="wrap">
+
 {% if works %}
-    <ul>
+    <ul class="swatches">
     {% for w in works %}
-        <li>{{ w.get_dominant_color.hexvalue }}
+        <li class="swatch" style="background-color: {{ w.get_dominant_color.hexvalue }};"></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No colors are available.</p>
 {% endif %}
+
+
+</div>
