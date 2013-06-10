@@ -1,0 +1,35 @@
+@import "compass/reset"
+@import "compass/css3"
+@import "compass/utilities/general/clearfix"
+
+body, input, textarea
+  margin: 40px
+  color: #888
+  background: #222
+  font: 16px/1.625em "Helvetica Neue", tahoma, sans-serif
+  -webkit-font-smoothing: antialiased
+
+
+#wrap
+  width: 900px
+  margin: 0 auto
+
+
+
+ul.swatches
+  +pie-clearfix
+.swatches .swatch
+  width: 40px
+  height: 20px
+  margin-right: 2px
+  background: #dddddd
+  float: left
+  +transition( all .5s)
+  &:hover
+    +transition( none)
+    +scale(1.2, 1.2)
+    +box-shadow( 0 1px 10px black)
+  &:first-child
+    +border-left-radius(4px)
+  &:last-child
+    +border-right-radius(4px)
