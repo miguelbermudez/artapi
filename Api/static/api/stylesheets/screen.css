@@ -138,8 +138,8 @@ ul.swatches {
 
 /* line 22, ../sass/_styles.sass */
 ul.swatches .swatch {
-  width: 60px;
-  height: 40px;
+  width: 40px;
+  height: 20px;
   margin-right: 2px;
   background: #dddddd;
   float: left;
