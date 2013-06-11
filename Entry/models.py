@@ -8,6 +8,9 @@ class WorkColor(models.Model):
     intvalue = models.IntegerField(unique=True, db_index=True)
     hexvalue = models.CharField(max_length=8)
 
+    def natural_key(self):
+        return {'red': self.red, 'green': self.green, 'blue': self.blue, 'hex': self.hexvalue}
+
 class Work(models.Model):
     accessionNumber = models.CharField("accession number", max_length=255, db_index=True)
     artist = models.TextField(db_index=True)
