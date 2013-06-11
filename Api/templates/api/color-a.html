@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'api/stylesheets/screen.css' %}" />
+
+<div id="wrap" ng-app="myApp" ng-controller="MyCtrl1">
+
+<ul class="swatches">
+    {% verbatim %}
+    <li ng-repeat="w in works" class="swatch" style="background-color:{{ w.fields.dominantcolor[0].hex }} ;"></li>
+    {% endverbatim %}
+</ul>
+
+
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+<script src="{% static 'api/javascript/app.js' %}"></script>
+<script src="{% static 'api/javascript/services.js' %}"></script>
+<script src="{% static 'api/javascript/controllers.js' %}"></script>
+<script src="{% static 'api/javascript/filters.js' %}"></script>
+<script src="{% static 'api/javascript/directives.js' %}"></script>
