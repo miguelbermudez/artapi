@@ -23,6 +23,8 @@ angular.module('myApp.controllers', []).
             switch ($scope.sortorder)  {
                 case "hue":
                     return w.fields.dominantcolor[0].hsv[0];
+                case "saturation":
+                    return w.fields.dominantcolor[0].hsv[1];
                 case "brightness":
                     return w.fields.dominantcolor[0].hsv[2];
                 default:
