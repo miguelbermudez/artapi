@@ -19,7 +19,7 @@ WORK_RETURN_NUMBER = 1000
 def color(request):
     # all_dominant_colors = []
     page = request.GET.get('page')
-    offset = page * WORK_RETURN_NUMBER + 1 if page is not None else 0
+    offset = int(page) * WORK_RETURN_NUMBER + 1 if page is not None else 0
 
     allworks = Work.objects.all().prefetch_related('dominantcolor')
     # allworks = Work.objects.all()
