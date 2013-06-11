@@ -7,6 +7,8 @@ angular.module('myApp.controllers', []).
         var url = '/api/work/j/color';
         var pageNum = $location.search()['page'];
         $scope.works = [];
+        $scope.sortorder = "default";
+        $scope.currentOver = {};
 
         $http.get(url, {cache: true, params: {page: pageNum}})
             .success(function(data) {
@@ -17,8 +19,19 @@ angular.module('myApp.controllers', []).
                 console.error('Error fetching feed:', data, ' ', status);
               });
 
+        $scope.doSort = function(w) {
+            switch ($scope.sortorder)  {
+                case "hue":
+                    return w.fields.dominantcolor[0].hsv[0];
+                case "brightness":
+                    return w.fields.dominantcolor[0].hsv[2];
+                default:
+                    return w.pk;
+            }
+        };
 
-  }])
-  .controller('MyCtrl2', [function() {
+        $scope.overSwatch = function(w) {
+            $scope.currentOver = w;
+        };
 
   }]);

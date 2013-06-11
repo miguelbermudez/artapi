@@ -3,17 +3,33 @@
 
 <div id="wrap" ng-app="myApp" ng-controller="MyCtrl1">
 
+<select ng-model="sortorder">
+  <option value="default">None</option>
+  <option value="hue">Hue</option>
+  <option value="brightness">Brightness</option>
+</select>
+
 <ul class="swatches">
     {% verbatim %}
-    <li ng-repeat="w in works" class="swatch" style="background-color:{{ w.fields.dominantcolor[0].hex }} ;"></li>
+        <li ng-repeat="w in works | orderBy:doSort" ng-mouseover="overSwatch(w)" class="swatch" style="background-color:{{ w.fields.dominantcolor[0].hex }};" tooltip>
+            <a href="{{ w.fields.workurl }}" target="_blank"></a>
+        </li>
     {% endverbatim %}
 </ul>
+{% verbatim %}
+<pre>sorting by: {{ sortorder }}</pre>
+<pre>
+    currently over: {{ currentOver.pk | json }}
+</pre>
+{% endverbatim %}
 
 
 
 </div>
 
+<script src="//code.jquery.com/jquery-2.0.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
 <script src="{% static 'api/javascript/app.js' %}"></script>
 <script src="{% static 'api/javascript/services.js' %}"></script>
 <script src="{% static 'api/javascript/controllers.js' %}"></script>
