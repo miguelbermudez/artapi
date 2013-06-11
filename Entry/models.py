@@ -1,4 +1,5 @@
 from django.db import models
+import colorsys
 
 # Create your models here.
 class WorkColor(models.Model):
@@ -8,8 +9,16 @@ class WorkColor(models.Model):
     intvalue = models.IntegerField(unique=True, db_index=True)
     hexvalue = models.CharField(max_length=8)
 
+
     def natural_key(self):
-        return {'red': self.red, 'green': self.green, 'blue': self.blue, 'hex': self.hexvalue}
+        return {'red': self.red, 'green': self.green, 'blue': self.blue, 'hex': self.hexvalue, 'hsv': self.get_hsv()}
+
+    #http://stackoverflow.com/questions/8915113/sort-hex-colors-to-match-rainbow
+    def get_hsv(w):
+        hexrgb = w.hexvalue
+        hexrgb = hexrgb.lstrip("#")   # in case you have Web color specs
+        r, g, b = (int(hexrgb[i:i+2], 16) / 255.0 for i in xrange(0,5,2))
+        return colorsys.rgb_to_hsv(r, g, b)
 
 class Work(models.Model):
     accessionNumber = models.CharField("accession number", max_length=255, db_index=True)
