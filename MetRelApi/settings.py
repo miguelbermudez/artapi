@@ -19,7 +19,7 @@ if not LOCAL:
             'USER': 'api_user',
             'PASSWORD': 'api_user',
             'HOST': 'localhost',                                # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-            'PORT': '5432',                                     # Set to empty string for default.
+            'PORT': '7432',                                     # Set to empty string for default.
         }
     }
 else:
