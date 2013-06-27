@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'api/stylesheets/timeline.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'api/stylesheets/screen.css' %}" />
+<script src="{% static 'api/javascript/lib/timeline.js' %}"></script>
+
+
+<div id="wrap-t" ng-app="myApp" ng-controller="TimelineCtrl">
+    <div class="timelineblock" timeline-works="works" timeline></div>
+
+</div>
+
+<script src="//code.jquery.com/jquery-2.0.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+<script src="{% static 'api/javascript/app.js' %}"></script>
+<script src="{% static 'api/javascript/services.js' %}"></script>
+<script src="{% static 'api/javascript/controllers.js' %}"></script>
+<script src="{% static 'api/javascript/filters.js' %}"></script>
+<script src="{% static 'api/javascript/directives.js' %}"></script>

@@ -10,18 +10,25 @@ body, input, textarea
   -webkit-font-smoothing: antialiased
 
 
-#wrap
+#wrap, #wrap-t
   width: 900px
   margin: 0 auto
 
+#wrap-t
+  width: 100vw
 
+.timelineblock
+  display: block
 
 ul.swatches
   +pie-clearfix
 
-ul.swatches .swatch
-  width: 40px
-  height: 20px
+.timelineSwatch
+  display: block
+
+li.swatch, .timelineSwatch
+  width: 20px
+  height: 10px
   margin-right: 2px
   background: #dddddd
   float: left
@@ -39,3 +46,16 @@ ul.swatches .swatch
   height: 100%
   width: 100%
   display: block
+
+div.timeline-event,div.timeline-event-box
+  background: none
+  border-color: transparent
+  border-style: none
+
+
+div.timeline-event-selected
+  border: none
+
+div.timeline-axis-grid-minor
+  color: transparent
+  border-color: transparent

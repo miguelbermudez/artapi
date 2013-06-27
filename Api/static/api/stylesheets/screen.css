@@ -123,11 +123,19 @@ body, input, textarea {
   -webkit-font-smoothing: antialiased; }
 
 /* line 13, ../sass/_styles.sass */
-#wrap {
+#wrap, #wrap-t {
   width: 900px;
   margin: 0 auto; }
 
-/* line 19, ../sass/_styles.sass */
+/* line 17, ../sass/_styles.sass */
+#wrap-t {
+  width: 100vw; }
+
+/* line 20, ../sass/_styles.sass */
+.timelineblock {
+  display: block; }
+
+/* line 23, ../sass/_styles.sass */
 ul.swatches {
   *zoom: 1; }
   /* line 38, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
@@ -136,10 +144,14 @@ ul.swatches {
     display: table;
     clear: both; }
 
-/* line 22, ../sass/_styles.sass */
-ul.swatches .swatch {
-  width: 40px;
-  height: 20px;
+/* line 26, ../sass/_styles.sass */
+.timelineSwatch {
+  display: block; }
+
+/* line 29, ../sass/_styles.sass */
+li.swatch, .timelineSwatch {
+  width: 20px;
+  height: 10px;
   margin-right: 2px;
   background: #dddddd;
   float: left;
@@ -147,8 +159,8 @@ ul.swatches .swatch {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s; }
-  /* line 29, ../sass/_styles.sass */
-  ul.swatches .swatch:hover {
+  /* line 36, ../sass/_styles.sass */
+  li.swatch:hover, .timelineSwatch:hover {
     -webkit-transition: none;
     -moz-transition: none;
     -o-transition: none;
@@ -161,16 +173,16 @@ ul.swatches .swatch {
     -webkit-box-shadow: 0 1px 10px black;
     -moz-box-shadow: 0 1px 10px black;
     box-shadow: 0 1px 10px black; }
-  /* line 33, ../sass/_styles.sass */
-  ul.swatches .swatch:first-child {
+  /* line 40, ../sass/_styles.sass */
+  li.swatch:first-child, .timelineSwatch:first-child {
     -moz-border-radius-topleft: 2px;
     -webkit-border-top-left-radius: 2px;
     border-top-left-radius: 2px;
     -moz-border-radius-bottomleft: 2px;
     -webkit-border-bottom-left-radius: 2px;
     border-bottom-left-radius: 2px; }
-  /* line 35, ../sass/_styles.sass */
-  ul.swatches .swatch:last-child {
+  /* line 42, ../sass/_styles.sass */
+  li.swatch:last-child, .timelineSwatch:last-child {
     -moz-border-radius-topright: 2px;
     -webkit-border-top-right-radius: 2px;
     border-top-right-radius: 2px;
@@ -178,11 +190,26 @@ ul.swatches .swatch {
     -webkit-border-bottom-right-radius: 2px;
     border-bottom-right-radius: 2px; }
 
-/* line 38, ../sass/_styles.sass */
+/* line 45, ../sass/_styles.sass */
 .swatch > a {
   height: 100%;
   width: 100%;
   display: block; }
+
+/* line 50, ../sass/_styles.sass */
+div.timeline-event, div.timeline-event-box {
+  background: none;
+  border-color: transparent;
+  border-style: none; }
+
+/* line 56, ../sass/_styles.sass */
+div.timeline-event-selected {
+  border: none; }
+
+/* line 59, ../sass/_styles.sass */
+div.timeline-axis-grid-minor {
+  color: transparent;
+  border-color: transparent; }
 
 /* line 7, ../sass/_tooltip.sass */
 .tooltip {
