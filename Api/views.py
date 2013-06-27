@@ -43,10 +43,13 @@ def color(request):
 
 def colorj(request):
     page = request.GET.get('page')
-    offset = int(page) * WORK_RETURN_NUMBER + 1 if page is not None else 0
+    amount = int(request.GET.get('amount'))
+    #offset = int(page) * WORK_RETURN_NUMBER + 1 if page is not None else 0
+    offset = int(page) * amount + 1 if page is not None else 0
     allworks = Work.objects.order_by("id")
     resultset = list(allworks)
-    paginator = Paginator(resultset, WORK_RETURN_NUMBER)
+    # paginator = Paginator(resultset, WORK_RETURN_NUMBER)
+    paginator = Paginator(resultset, amount)
 
     try:
         works = paginator.page(page)
