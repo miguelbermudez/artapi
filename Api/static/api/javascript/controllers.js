@@ -6,11 +6,12 @@ angular.module('myApp.controllers', [])
     .controller('MyCtrl1', ['$scope', '$http', '$location', '$log', function($scope, $http, $location, $log) {
         var url = '/api/work/j/color';
         var pageNum = $location.search()['page'];
+        var _amount = $location.search()['amount'];
         $scope.works = [];
         $scope.sortorder = "default";
         $scope.currentOver = {};
 
-        $http.get(url, {cache: true, params: {page: pageNum}})
+        $http.get( url, {cache: true, params: {page: pageNum, amount: _amount}} )
             .success(function(data) {
                 $log.debug('#', pageNum, data, data.length);
                 $scope.works = data;
