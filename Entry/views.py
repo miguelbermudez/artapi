@@ -1,6 +1,7 @@
 # Create your views here.
 import json
 import sys
+import csv
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -87,3 +88,27 @@ def upload(request):
             counter += 1
 
     return HttpResponse(json.dumps(titles), content_type="application/json")
+
+
+def readcsv(request):
+    rows = []
+
+    f = open('FINAL-met-date-title-WITH-ID.csv', 'rU')
+    try:
+        reader = csv.reader(f)
+        for idx, row in enumerate(reader):
+            if idx == 0: continue
+            w_title = row[0]
+            w_numeric_date = row[2]
+            w_pk = row[3]
+            work = Work.objects.get(pk=w_pk)
+            work.title = w_title
+            work.numericdate = int(w_numeric_date) if len(w_numeric_date) > 0 and int(w_numeric_date) else None
+            work.save()
+            sys.stdout.write("#%s Work: %s         \r" % (idx, work.title))
+            #rows.append(row)
+    finally:
+        f.close()
+
+
+    return HttpResponse(json.dumps(rows), content_type="application/json")
