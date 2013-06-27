@@ -29,6 +29,7 @@ class Work(models.Model):
     creditLine = models.TextField("credit line")
     culture = models.CharField(max_length=255)
     date = models.CharField(max_length=255)
+    numericdate = models.CharField(max_length=255)
     description = models.TextField()
     designer = models.CharField(max_length=255)
     dimensions = models.TextField()
